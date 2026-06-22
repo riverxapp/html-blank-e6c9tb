@@ -1,66 +1,412 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Edit Me</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <title>Litestack — Product teams build faster with modern Bubble development</title>
+  <meta name="description" content="Litestack is a Bubble development agency for founders and product teams that need a polished, scalable no-code app built with speed, clarity, and conversion in mind." />
+  <meta name="theme-color" content="#9a3412" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif']
+          },
+          boxShadow: {
+            soft: '0 18px 50px rgba(154, 52, 18, 0.10)',
+            glow: '0 0 0 1px rgba(251, 146, 60, 0.18), 0 24px 80px rgba(154, 52, 18, 0.16)'
+          }
+        }
+      }
+    }
+  </script>
   <style>
     :root {
-      color-scheme: light;
+      color-scheme: light dark;
     }
 
-    * {
-      box-sizing: border-box;
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
-      margin: 0;
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
-      background: #ffffff;
-      color: #111111;
-      font-family: "Inter", sans-serif;
+      font-family: Inter, ui-sans-serif, system-ui, sans-serif;
     }
 
-    main {
-      width: min(28rem, calc(100vw - 2rem));
-      text-align: center;
+    .glass-panel {
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
     }
 
-    .icon {
-      width: 3rem;
-      height: 3rem;
-      margin: 0 auto 1rem;
-      display: block;
-      color: #111111;
+    .text-balance {
+      text-wrap: balance;
     }
 
-    h1 {
-      margin: 0 0 0.5rem;
-      font-size: 1.5rem;
-      font-weight: 600;
+    .section-shell {
+      position: relative;
     }
 
-    p {
-      margin: 0;
-      font-size: 1rem;
-      line-height: 1.5;
-      color: #444444;
+    .section-shell::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(circle at top, rgba(249, 115, 22, 0.10), transparent 42%);
+      opacity: 0.9;
+    }
+
+    .dark .section-shell::before {
+      background: radial-gradient(circle at top, rgba(251, 146, 60, 0.18), transparent 42%);
+    }
+
+    .focus-ring:focus-visible {
+      outline: 2px solid rgb(234 88 12);
+      outline-offset: 2px;
+    }
+
+    .faq-panel {
+      transition: max-height 260ms ease, opacity 260ms ease;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
     }
   </style>
 </head>
-<body>
-  <main>
-    <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M12 3L4 7V12C4 17 7.4 20.9 12 22C16.6 20.9 20 17 20 12V7L12 3Z" stroke="currentColor" stroke-width="1.5"/>
-      <path d="M9.5 12L11.25 13.75L15 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
-    <h1>Open for Editing</h1>
-    <p>Agent: edit this page freely and keep it simple.</p>
-  </main>
+<body class="bg-stone-50 text-stone-900 antialiased dark:bg-stone-950 dark:text-stone-100">
+  <div class="min-h-screen bg-[radial-gradient(circle_at_top,rgba(249,115,22,0.14),transparent_28%),linear-gradient(to_bottom,rgba(255,251,235,0.96),rgba(255,255,255,1))] dark:bg-[radial-gradient(circle_at_top,rgba(251,146,60,0.18),transparent_28%),linear-gradient(to_bottom,rgba(2,6,23,0.96),rgba(2,6,23,1))]">
+    <header class="sticky top-0 z-50 border-b border-stone-200/70 bg-white/75 glass-panel dark:border-stone-800/70 dark:bg-stone-950/75">
+      <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+        <a href="#hero" class="focus-ring flex items-center gap-3 font-semibold tracking-tight">
+          <span class="flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br from-orange-600 to-amber-500 text-white shadow-soft">L</span>
+          <span>Litestack</span>
+        </a>
+
+        <nav class="hidden items-center gap-8 md:flex" aria-label="Primary">
+          <a href="#services" class="text-sm font-medium text-stone-600 transition hover:text-stone-900 dark:text-stone-300 dark:hover:text-white">Services</a>
+          <a href="#work" class="text-sm font-medium text-stone-600 transition hover:text-stone-900 dark:text-stone-300 dark:hover:text-white">Work</a>
+          <a href="#process" class="text-sm font-medium text-stone-600 transition hover:text-stone-900 dark:text-stone-300 dark:hover:text-white">Process</a>
+          <a href="#faq" class="text-sm font-medium text-stone-600 transition hover:text-stone-900 dark:text-stone-300 dark:hover:text-white">FAQ</a>
+        </nav>
+
+        <div class="flex items-center gap-3">
+          <button id="themeToggle" type="button" class="focus-ring hidden rounded-full border border-stone-200 bg-white px-4 py-2 text-sm font-medium text-stone-700 transition hover:-translate-y-0.5 hover:shadow-soft dark:border-stone-800 dark:bg-stone-900 dark:text-stone-200 sm:inline-flex" aria-label="Toggle dark mode">
+            Theme
+          </button>
+          <a href="#contact" class="focus-ring inline-flex items-center justify-center rounded-full bg-stone-900 px-4 py-2 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-stone-800 dark:bg-white dark:text-stone-950 dark:hover:bg-stone-200">
+            Book a call
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section id="hero" class="section-shell">
+        <div class="mx-auto grid max-w-7xl items-center gap-12 px-4 py-16 sm:px-6 sm:py-20 lg:grid-cols-2 lg:px-8 lg:py-28">
+          <div class="relative z-10">
+            <span class="inline-flex items-center rounded-full border border-orange-200 bg-orange-50 px-4 py-2 text-sm font-medium text-orange-700 dark:border-orange-900 dark:bg-orange-950/60 dark:text-orange-300">
+              Litestack Bubble development for serious product teams
+            </span>
+            <h1 class="mt-6 max-w-3xl text-4xl font-extrabold tracking-tight text-balance sm:text-5xl lg:text-6xl">
+              Ship a better no-code product with a warmer, sharper brand.
+            </h1>
+            <p class="mt-6 max-w-2xl text-lg leading-8 text-stone-600 dark:text-stone-300">
+              We design, build, and optimize Bubble apps that feel polished from day one — fast to launch, easy to maintain, and built to convert real users.
+            </p>
+
+            <div class="mt-8 flex flex-col gap-4 sm:flex-row">
+              <a href="#contact" class="focus-ring inline-flex items-center justify-center rounded-full bg-gradient-to-r from-orange-600 to-amber-500 px-6 py-3 text-base font-semibold text-white shadow-soft transition hover:-translate-y-0.5">
+                Get a Litestack estimate
+              </a>
+              <a href="#work" class="focus-ring inline-flex items-center justify-center rounded-full border border-stone-300 bg-white px-6 py-3 text-base font-semibold text-stone-900 transition hover:-translate-y-0.5 hover:shadow-soft dark:border-stone-700 dark:bg-stone-900 dark:text-white">
+                See recent builds
+              </a>
+            </div>
+
+            <div class="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-3">
+              <div class="rounded-2xl border border-stone-200 bg-white p-4 shadow-soft dark:border-stone-800 dark:bg-stone-900">
+                <p class="text-2xl font-bold">5–10x</p>
+                <p class="mt-1 text-sm text-stone-600 dark:text-stone-400">Faster than a traditional custom build for many MVPs.</p>
+              </div>
+              <div class="rounded-2xl border border-stone-200 bg-white p-4 shadow-soft dark:border-stone-800 dark:bg-stone-900">
+                <p class="text-2xl font-bold">Launch-ready</p>
+                <p class="mt-1 text-sm text-stone-600 dark:text-stone-400">Polished UX, responsive layouts, and conversion flow included.</p>
+              </div>
+              <div class="rounded-2xl border border-stone-200 bg-white p-4 shadow-soft dark:border-stone-800 dark:bg-stone-900">
+                <p class="text-2xl font-bold">No handoff mess</p>
+                <p class="mt-1 text-sm text-stone-600 dark:text-stone-400">Clear structure so your team can keep shipping after launch.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="relative z-10">
+            <div class="rounded-[2rem] border border-stone-200 bg-white p-4 shadow-glow dark:border-stone-800 dark:bg-stone-900">
+              <div class="rounded-[1.5rem] bg-stone-950 p-5 text-white">
+                <div class="flex items-center justify-between">
+                  <div>
+                    <p class="text-sm text-stone-400">Litestack build snapshot</p>
+                    <p class="mt-1 text-xl font-semibold">Conversion-first dashboard</p>
+                  </div>
+                  <span class="rounded-full bg-emerald-500/15 px-3 py-1 text-xs font-semibold text-emerald-300">Live</span>
+                </div>
+
+                <div class="mt-6 grid gap-4 sm:grid-cols-2">
+                  <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+                    <p class="text-sm text-stone-400">Primary flow</p>
+                    <p class="mt-2 text-2xl font-bold">Onboarding → activation → upgrade</p>
+                  </div>
+                  <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+                    <p class="text-sm text-stone-400">System</p>
+                    <p class="mt-2 text-2xl font-bold">Reusable components</p>
+                  </div>
+                  <div class="rounded-2xl border border-white/10 bg-white/5 p-4 sm:col-span-2">
+                    <p class="text-sm text-stone-400">Momentum</p>
+                    <div class="mt-3 h-3 rounded-full bg-white/10">
+                      <div class="h-3 w-[78%] rounded-full bg-gradient-to-r from-orange-500 to-amber-400"></div>
+                    </div>
+                    <p class="mt-3 text-sm text-stone-300">Design system, workflows, and responsive pages aligned to growth goals.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="trust" class="border-y border-stone-200/70 bg-white/70 py-10 dark:border-stone-800/70 dark:bg-stone-950/70">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <p class="text-center text-sm font-medium uppercase tracking-[0.24em] text-stone-500 dark:text-stone-400">Trusted for launch-critical Bubble work</p>
+          <div class="mt-6 grid grid-cols-2 gap-4 md:grid-cols-4">
+            <div class="rounded-2xl border border-stone-200 bg-stone-50 px-4 py-5 text-center text-sm font-semibold text-stone-700 dark:border-stone-800 dark:bg-stone-900 dark:text-stone-300">Founders</div>
+            <div class="rounded-2xl border border-stone-200 bg-stone-50 px-4 py-5 text-center text-sm font-semibold text-stone-700 dark:border-stone-800 dark:bg-stone-900 dark:text-stone-300">Agencies</div>
+            <div class="rounded-2xl border border-stone-200 bg-stone-50 px-4 py-5 text-center text-sm font-semibold text-stone-700 dark:border-stone-800 dark:bg-stone-900 dark:text-stone-300">Ops teams</div>
+            <div class="rounded-2xl border border-stone-200 bg-stone-50 px-4 py-5 text-center text-sm font-semibold text-stone-700 dark:border-stone-800 dark:bg-stone-900 dark:text-stone-300">B2B startups</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="services" class="section-shell py-20 sm:py-24">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="max-w-2xl">
+            <p class="text-sm font-semibold uppercase tracking-[0.24em] text-orange-600 dark:text-orange-400">What we do</p>
+            <h2 class="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">Everything a Bubble build needs to feel product-grade.</h2>
+            <p class="mt-4 text-lg text-stone-600 dark:text-stone-300">We handle the parts that usually get messy: UX, data structure, workflows, responsive implementation, and the conversion details that make the app feel credible.</p>
+          </div>
+
+          <div class="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            <article class="rounded-[1.75rem] border border-stone-200 bg-white p-6 shadow-soft dark:border-stone-800 dark:bg-stone-900">
+              <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-orange-50 text-orange-700 dark:bg-orange-950/60 dark:text-orange-300">01</div>
+              <h3 class="mt-5 text-xl font-semibold">Bubble MVP builds</h3>
+              <p class="mt-3 text-stone-600 dark:text-stone-300">Launch the first version of your product with a clear flow, clean interface, and enough structure to support early users.</p>
+            </article>
+            <article class="rounded-[1.75rem] border border-stone-200 bg-white p-6 shadow-soft dark:border-stone-800 dark:bg-stone-900">
+              <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-orange-50 text-orange-700 dark:bg-orange-950/60 dark:text-orange-300">02</div>
+              <h3 class="mt-5 text-xl font-semibold">Redesigns and rebuilds</h3>
+              <p class="mt-3 text-stone-600 dark:text-stone-300">Turn a rough internal tool or early app into something users trust and teams are proud to demo.</p>
+            </article>
+            <article class="rounded-[1.75rem] border border-stone-200 bg-white p-6 shadow-soft dark:border-stone-800 dark:bg-stone-900">
+              <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-orange-50 text-orange-700 dark:bg-orange-950/60 dark:text-orange-300">03</div>
+              <h3 class="mt-5 text-xl font-semibold">Workflow + data architecture</h3>
+              <p class="mt-3 text-stone-600 dark:text-stone-300">We map the logic behind the app so permissions, databases, and automations behave the way the business needs.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="work" class="section-shell py-20 sm:py-24">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="grid gap-6 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
+            <div>
+              <p class="text-sm font-semibold uppercase tracking-[0.24em] text-orange-600 dark:text-orange-400">Selected work</p>
+              <h2 class="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">A landing page and app story that feels clear at every step.</h2>
+            </div>
+            <p class="text-lg text-stone-600 dark:text-stone-300">The point is not just to make Bubble look nicer. The point is to make the product easier to understand, easier to trust, and easier to buy.</p>
+          </div>
+
+          <div class="mt-10 grid gap-6 lg:grid-cols-3">
+            <article class="rounded-[1.75rem] border border-stone-200 bg-white p-6 shadow-soft dark:border-stone-800 dark:bg-stone-900">
+              <p class="text-sm font-medium text-orange-600 dark:text-orange-400">SaaS onboarding</p>
+              <h3 class="mt-3 text-xl font-semibold">Reduced setup friction</h3>
+              <p class="mt-3 text-stone-600 dark:text-stone-300">We shaped a cleaner welcome flow, added better empty states, and made the first session easier to finish.</p>
+            </article>
+            <article class="rounded-[1.75rem] border border-stone-200 bg-white p-6 shadow-soft dark:border-stone-800 dark:bg-stone-900">
+              <p class="text-sm font-medium text-orange-600 dark:text-orange-400">Marketplace platform</p>
+              <h3 class="mt-3 text-xl font-semibold">Improved buyer trust</h3>
+              <p class="mt-3 text-stone-600 dark:text-stone-300">We clarified the listing hierarchy, strengthened CTA placement, and tightened mobile spacing.</p>
+            </article>
+            <article class="rounded-[1.75rem] border border-stone-200 bg-white p-6 shadow-soft dark:border-stone-800 dark:bg-stone-900">
+              <p class="text-sm font-medium text-orange-600 dark:text-orange-400">Internal operations tool</p>
+              <h3 class="mt-3 text-xl font-semibold">Simplified daily workflows</h3>
+              <p class="mt-3 text-stone-600 dark:text-stone-300">The final build focused on faster handoffs, cleaner status views, and less clicking to get work done.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="process" class="py-20 sm:py-24">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="max-w-2xl">
+            <p class="text-sm font-semibold uppercase tracking-[0.24em] text-orange-600 dark:text-orange-400">Process</p>
+            <h2 class="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">Simple enough to move quickly. Structured enough to avoid rework.</h2>
+          </div>
+
+          <div class="mt-10 grid gap-6 lg:grid-cols-4">
+            <div class="rounded-[1.75rem] border border-stone-200 bg-white p-6 shadow-soft dark:border-stone-800 dark:bg-stone-900">
+              <p class="text-sm font-semibold text-orange-600 dark:text-orange-400">Step 1</p>
+              <h3 class="mt-3 text-lg font-semibold">Scope the build</h3>
+              <p class="mt-3 text-stone-600 dark:text-stone-300">We define the pages, flows, and edge cases that matter most.</p>
+            </div>
+            <div class="rounded-[1.75rem] border border-stone-200 bg-white p-6 shadow-soft dark:border-stone-800 dark:bg-stone-900">
+              <p class="text-sm font-semibold text-orange-600 dark:text-orange-400">Step 2</p>
+              <h3 class="mt-3 text-lg font-semibold">Design the structure</h3>
+              <p class="mt-3 text-stone-600 dark:text-stone-300">We map the UX so the app makes sense before any build work starts.</p>
+            </div>
+            <div class="rounded-[1.75rem] border border-stone-200 bg-white p-6 shadow-soft dark:border-stone-800 dark:bg-stone-900">
+              <p class="text-sm font-semibold text-orange-600 dark:text-orange-400">Step 3</p>
+              <h3 class="mt-3 text-lg font-semibold">Build in Bubble</h3>
+              <p class="mt-3 text-stone-600 dark:text-stone-300">We implement responsive pages, workflows, and reusable elements.</p>
+            </div>
+            <div class="rounded-[1.75rem] border border-stone-200 bg-white p-6 shadow-soft dark:border-stone-800 dark:bg-stone-900">
+              <p class="text-sm font-semibold text-orange-600 dark:text-orange-400">Step 4</p>
+              <h3 class="mt-3 text-lg font-semibold">Launch and refine</h3>
+              <p class="mt-3 text-stone-600 dark:text-stone-300">We test the real flows, fix friction, and support the post-launch iteration loop.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="faq" class="section-shell py-20 sm:py-24">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="max-w-2xl">
+            <p class="text-sm font-semibold uppercase tracking-[0.24em] text-orange-600 dark:text-orange-400">FAQ</p>
+            <h2 class="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">The short answers founders usually want first.</h2>
+          </div>
+
+          <div class="mt-10 space-y-4" id="faqList">
+            <details class="group rounded-[1.5rem] border border-stone-200 bg-white p-6 shadow-soft open:shadow-glow dark:border-stone-800 dark:bg-stone-900">
+              <summary class="cursor-pointer list-none text-lg font-semibold focus-ring">How fast can you start?</summary>
+              <p class="mt-4 max-w-3xl text-stone-600 dark:text-stone-300">Usually as soon as the brief is clear. Smaller landing pages can move quickly; larger app builds are scheduled after discovery.</p>
+            </details>
+            <details class="group rounded-[1.5rem] border border-stone-200 bg-white p-6 shadow-soft open:shadow-glow dark:border-stone-800 dark:bg-stone-900">
+              <summary class="cursor-pointer list-none text-lg font-semibold focus-ring">Do you only work in Bubble?</summary>
+              <p class="mt-4 max-w-3xl text-stone-600 dark:text-stone-300">Bubble is the center of the delivery, but we also support the positioning, UX, and landing page work around it so the product has a coherent front door.</p>
+            </details>
+            <details class="group rounded-[1.5rem] border border-stone-200 bg-white p-6 shadow-soft open:shadow-glow dark:border-stone-800 dark:bg-stone-900">
+              <summary class="cursor-pointer list-none text-lg font-semibold focus-ring">Can you work from an existing Bubble app?</summary>
+              <p class="mt-4 max-w-3xl text-stone-600 dark:text-stone-300">Yes. We can clean up existing pages, improve the UX, and restructure the implementation without starting over unless that is clearly the best path.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="py-20 sm:py-24">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="overflow-hidden rounded-[2rem] border border-stone-200 bg-stone-950 px-6 py-10 shadow-glow dark:border-stone-800 sm:px-10 sm:py-12">
+            <div class="grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
+              <div>
+                <p class="text-sm font-semibold uppercase tracking-[0.24em] text-orange-300">Ready to build</p>
+                <h2 class="mt-4 max-w-2xl text-3xl font-bold tracking-tight text-white sm:text-4xl">Bring us the idea, the rough Bubble build, or the launch deadline.</h2>
+                <p class="mt-4 max-w-2xl text-lg text-stone-300">We’ll help you turn it into a product people can actually use, trust, and pay for.</p>
+              </div>
+              <div class="rounded-[1.5rem] border border-white/10 bg-white/5 p-6">
+                <p class="text-sm text-stone-300">Best fit for</p>
+                <ul class="mt-4 space-y-3 text-sm text-stone-200">
+                  <li>• Founders validating an MVP</li>
+                  <li>• Teams replacing a messy prototype</li>
+                  <li>• Agencies needing Bubble execution support</li>
+                </ul>
+                <a href="mailto:hello@litestack.dev" class="focus-ring mt-6 inline-flex w-full items-center justify-center rounded-full bg-white px-5 py-3 text-base font-semibold text-stone-950 transition hover:-translate-y-0.5 hover:bg-stone-200">
+                  hello@litestack.dev
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="border-t border-stone-200/70 bg-white/75 py-8 dark:border-stone-800/70 dark:bg-stone-950/75">
+      <div class="mx-auto flex max-w-7xl flex-col gap-4 px-4 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
+        <p class="text-sm text-stone-500 dark:text-stone-400">© 2026 Litestack. Built for fast-moving product teams.</p>
+        <div class="flex flex-wrap gap-5 text-sm">
+          <a href="#services" class="text-stone-600 transition hover:text-stone-900 dark:text-stone-300 dark:hover:text-white">Services</a>
+          <a href="#work" class="text-stone-600 transition hover:text-stone-900 dark:text-stone-300 dark:hover:text-white">Work</a>
+          <a href="#faq" class="text-stone-600 transition hover:text-stone-900 dark:text-stone-300 dark:hover:text-white">FAQ</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    (function () {
+      const root = document.documentElement;
+      const toggle = document.getElementById('themeToggle');
+      const storageKey = 'litestack-theme';
+      const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+      function applyTheme(mode) {
+        const isDark = mode === 'dark';
+        root.classList.toggle('dark', isDark);
+        if (toggle) {
+          toggle.textContent = isDark ? 'Light' : 'Theme';
+          toggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Toggle dark mode');
+        }
+      }
+
+      function initTheme() {
+        const saved = localStorage.getItem(storageKey);
+        const preferred = saved || (mediaQuery.matches ? 'dark' : 'light');
+        applyTheme(preferred);
+
+        if (!toggle) return;
+
+        toggle.addEventListener('click', () => {
+          const next = root.classList.contains('dark') ? 'light' : 'dark';
+          localStorage.setItem(storageKey, next);
+          applyTheme(next);
+        });
+
+        if (typeof mediaQuery.addEventListener === 'function') {
+          mediaQuery.addEventListener('change', (event) => {
+            if (!localStorage.getItem(storageKey)) {
+              applyTheme(event.matches ? 'dark' : 'light');
+            }
+          });
+        }
+      }
+
+      function initFaq() {
+        const details = document.querySelectorAll('#faqList details');
+        details.forEach((item) => {
+          item.addEventListener('toggle', () => {
+            details.forEach((other) => {
+              if (other !== item && item.open) {
+                other.open = false;
+              }
+            });
+          });
+        });
+      }
+
+      initTheme();
+      initFaq();
+    })();
+  </script>
 </body>
 </html>
